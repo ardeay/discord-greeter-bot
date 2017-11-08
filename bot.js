@@ -15,7 +15,7 @@ const requestHandler = (request, response) => {
 const server = http.createServer(requestHandler)
 
 server.listen(port, (err) => {
-  if (err) { 
+  if (err) {
     return console.log('something bad happened', err)
   }
 
@@ -43,9 +43,7 @@ bot.on('ready', function (evt) {
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
-client.on("ready", () => {
-    client.user.setStatus("online");
-});
+
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it needs to execute a command
     // for this script it will listen for messages that will start with `!`
