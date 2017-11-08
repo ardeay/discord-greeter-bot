@@ -4,7 +4,23 @@ var Discord = require('discord.io');
 var request = require('request');
 var logger = require('winston');
 
+const http = require('http')
+const port = 3000
 
+const requestHandler = (request, response) => {
+  console.log(request.url)
+  response.end('Hello Node.js Server!')
+}
+
+const server = http.createServer(requestHandler)
+
+server.listen(port, (err) => {
+  if (err) { 
+    return console.log('something bad happened', err)
+  }
+
+  console.log(`server is listening on ${port}`)
+})
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -27,14 +43,16 @@ bot.on('ready', function (evt) {
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
-
+client.on("ready", () => {
+    client.user.setStatus("online");
+});
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it needs to execute a command
     // for this script it will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
 
-        console.log(args)
+        // console.log(args)
 
         var cmd = args[0];
 
@@ -68,6 +86,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     }
 
                 })
+
             break;
             default:
                 bot.sendMessage({ to: channelID, message: 'Unknown command.' });
