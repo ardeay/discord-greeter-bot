@@ -15,7 +15,7 @@ const requestHandler = (request, response) => {
 const server = http.createServer(requestHandler)
 
 server.listen(process.env.PORT || port, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, server.settings.env);
+  console.log("Express server listening on port %d", this.address().port);
 });
 
 
