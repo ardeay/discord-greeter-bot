@@ -5,7 +5,7 @@ var request = require('request');
 var logger = require('winston');
 
 const http = require('http')
-const port = 3000
+const port = 80
 
 const requestHandler = (request, response) => {
   console.log(request.url)
@@ -14,13 +14,10 @@ const requestHandler = (request, response) => {
 
 const server = http.createServer(requestHandler)
 
-server.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
+server.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 
-  console.log(`server is listening on ${port}`)
-})
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
