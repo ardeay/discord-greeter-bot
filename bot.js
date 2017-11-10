@@ -9,7 +9,7 @@ const port = 3000
 
 const requestHandler = (request, response) => {
   console.log(request.url)
-  response.end('Hello Node.js Server!')
+  response.end('EchoBot!')
 }
 
 const server = http.createServer(requestHandler)
@@ -69,7 +69,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                 // Start the request
                 request(options, function (error, response, body) {
-                    console.log('in teh request '+ response.statusCode)
+                  
                     if (!error && response.statusCode == 200) {
                         // Print out the response body
                         //console.log(body)
