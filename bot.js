@@ -102,7 +102,8 @@ client.on('message', function (user, userID, channelID, message, evt) {
             case 'test_embed':
                 var embed = Discord.RichEmbed()
                   .setDescription('lalala');
-                message.channel.sendEmbed(embed);
+                  client.sendMessage({ to: channelID, message: 'test' });
+                  client.sendMessage({ to: channelID, embed: embed });
                 break;
             case 'card':
                 var cardName =  args.join(' ')
