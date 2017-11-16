@@ -7,6 +7,13 @@ var logger = require('winston');
 const http = require('http')
 const port = 3000
 
+
+// Initialize Discord Bot
+var bot = new Discord.Client({
+    token: process.env.USERTOKEN,
+    autorun: true
+});
+
 const requestHandler = (request, response) => {
   console.log(request.url)
   response.end('EchoBot back on!')
@@ -33,13 +40,6 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
-console.log(process.env)
-
-// Initialize Discord Bot
-var bot = new Discord.Client({
-    token: process.env.USERTOKEN,
-    autorun: true
-});
 
 
 bot.on('ready', function (evt) {
