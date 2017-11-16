@@ -13,7 +13,7 @@ var client = new Discord.Client({
     token: process.env.USERTOKEN,
     autorun: true
 });
-
+console.log(client);
 const test_emote = client.emojis.find("name", "onec");
 
 const requestHandler = (request, response) => {
