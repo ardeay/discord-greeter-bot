@@ -23,6 +23,13 @@ const requestHandler = (request, response) => {
 const server = http.createServer(requestHandler)
 
 server.listen(process.env.PORT || port, function(){
+  // Initialize Discord Bot
+  client = new Discord.Client({
+      token: process.env.USERTOKEN,
+      autorun: true
+  });
+
+
   client.on('ready', function (evt) {
       logger.info('Connected');
       logger.info('Logged in as: ');
