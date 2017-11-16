@@ -64,6 +64,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             // !ping
             case 'test_emote':
                 bot.sendMessage({ to: channelID, message: test_emote });
+                break;
             case 'card':
                 var cardName =  args.join(' ')
                 //console.log(cardName)
