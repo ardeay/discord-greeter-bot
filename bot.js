@@ -13,8 +13,7 @@ var client = new Discord.Client({
     token: process.env.USERTOKEN,
     autorun: true
 });
-console.log(client);
-const test_emote = client.emojis.find("name", "onec");
+
 
 const requestHandler = (request, response) => {
   console.log(request.url)
@@ -65,7 +64,7 @@ client.on('message', function (user, userID, channelID, message, evt) {
         switch(cmd) {
             // !ping
             case 'test_emote':
-                client.sendMessage({ to: channelID, message: 'test' + test_emote });
+                client.sendMessage({ to: channelID, message: 'test 380567470408204309' });
                 break;
             case 'card':
                 var cardName =  args.join(' ')
