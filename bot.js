@@ -64,7 +64,7 @@ client.on('message', function (user, userID, channelID, message, evt) {
         switch(cmd) {
             // !ping
             case 'test_emote':
-                client.sendMessage({ to: channelID, message: 'test 380567470408204309' });
+                client.sendMessage({ to: channelID, message: 'test :380567470408204309:' });
                 break;
             case 'card':
                 var cardName =  args.join(' ')
