@@ -9,12 +9,12 @@ const port = 3000
 
 
 // Initialize Discord Bot
-var bot = new Discord.Client({
+var client = new Discord.Client({
     token: process.env.USERTOKEN,
     autorun: true
 });
 
-const test_emote = bot.emojis.find("name", "onec");
+const test_emote = client.emojis.find("name", "onec");
 
 const requestHandler = (request, response) => {
   console.log(request.url)
@@ -24,7 +24,7 @@ const requestHandler = (request, response) => {
 const server = http.createServer(requestHandler)
 
 server.listen(process.env.PORT || port, function(){
-  bot.on('ready', function (evt) {
+  client.on('ready', function (evt) {
       logger.info('Connected');
       logger.info('Logged in as: ');
       logger.info(bot.username + ' - (' + bot.id + ')');
@@ -44,13 +44,13 @@ logger.level = 'debug';
 
 
 
-bot.on('ready', function (evt) {
+client.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+    logger.info(client.username + ' - (' + bot.id + ')');
 });
 
-bot.on('message', function (user, userID, channelID, message, evt) {
+client.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it needs to execute a command
     // for this script it will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
@@ -65,7 +65,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         switch(cmd) {
             // !ping
             case 'test_emote':
-                bot.sendMessage({ to: channelID, message: 'test' + test_emote });
+                client.sendMessage({ to: channelID, message: 'test' + test_emote });
                 break;
             case 'card':
                 var cardName =  args.join(' ')
@@ -86,9 +86,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         // Print out the response body
                         //console.log(body)
 
-                        bot.sendMessage({ to: channelID, message: body });
+                        client.sendMessage({ to: channelID, message: body });
                     } else {
-                        bot.sendMessage({ to: channelID, message: 'Error: '+error });
+                        client.sendMessage({ to: channelID, message: 'Error: '+error });
 
                     }
 
@@ -96,7 +96,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
             break;
             default:
-                bot.sendMessage({ to: channelID, message: 'Unknown command.' });
+                client.sendMessage({ to: channelID, message: 'Unknown command.' });
         }
     }
 })
