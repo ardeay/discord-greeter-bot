@@ -102,11 +102,14 @@ client.on('message', function (user, userID, channelID, message, evt) {
             case 'test_embed':
                   client.sendMessage({ to: channelID, message: 'test' });
 
-                  var embed = Discord.RichEmbed()
-                    .setDescription('lalala');
-                    message.channel.send(embed);
+                  // var embed = Discord.RichEmbed()
+                  //   .setDescription('lalala');
+                    message.channel.send({embed: {
+                    color: 3447003,
+                    description: "A very simple Embed!"
+                  }});
 
-                  
+
                 break;
             case 'card':
                 var cardName =  args.join(' ')
