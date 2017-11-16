@@ -6,13 +6,15 @@ var logger = require('winston');
 
 const http = require('http')
 const port = 3000
-const test_emote = client.emojis.find("name", "onec");
+
 
 // Initialize Discord Bot
 var bot = new Discord.Client({
     token: process.env.USERTOKEN,
     autorun: true
 });
+
+const test_emote = bot.emojis.find("name", "onec");
 
 const requestHandler = (request, response) => {
   console.log(request.url)
