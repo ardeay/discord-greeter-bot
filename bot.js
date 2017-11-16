@@ -104,7 +104,7 @@ client.on('message', function (user, userID, channelID, message, evt) {
 
                   // var embed = Discord.RichEmbed()
                   //   .setDescription('lalala');
-                    message.channel.send({embed: {
+                    client.RichEmbed({embed: {
                     color: 3447003,
                     description: "A very simple Embed!"
                   }});
