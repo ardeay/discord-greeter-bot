@@ -6,7 +6,7 @@ var logger = require('winston');
 
 const http = require('http')
 const port = 3000
-
+const test_emote = client.emojis.find("name", "onec");
 
 // Initialize Discord Bot
 var bot = new Discord.Client({
@@ -62,6 +62,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
         switch(cmd) {
             // !ping
+            case 'test_emote':
+                bot.sendMessage({ to: channelID, message: test_emote });
             case 'card':
                 var cardName =  args.join(' ')
                 //console.log(cardName)
