@@ -98,6 +98,12 @@ client.on('message', function (user, userID, channelID, message, evt) {
             case 'test_emote':
                 client.sendMessage({ to: channelID, message: '<:onec:380567470408204309>' });
                 break;
+
+            case 'test_embed':
+                var embed = Discord.RichEmbed()
+                  .setDescription('lalala');
+                client.sendEmbed(embed);
+                break;
             case 'card':
                 var cardName =  args.join(' ')
                 //console.log(cardName)
@@ -114,9 +120,6 @@ client.on('message', function (user, userID, channelID, message, evt) {
                 request(options, function (error, response, body) {
 
                     if (!error && response.statusCode == 200) {
-                        // Print out the response body
-                        //console.log(body)
-
 
                         client.sendMessage({ to: channelID, message: body.replaceSymbols() });
                     } else {
