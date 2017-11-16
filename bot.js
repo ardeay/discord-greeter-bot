@@ -41,7 +41,39 @@ logger.add(logger.transports.Console, {
 });
 logger.level = 'debug';
 
+var emote_array = {
+  ':xc:' : '<:xc:380567858637307905>',
+  ':green:' : '<:green:380567936575733761>',
+  ':white:' : '<:white:380568001839104000>',
+  ':red:' : '<:red:380567959019716631>',
+  ':black:' : '<:black:380567912487976971>',
+  ':blue:' : '<:blue:380567925066825728>',
+  ':colorless:' : '<:colorless:380567843563110400>',
+  ':zeroc:' : '<:zeroc:380567828920664065>',
+  ':onec:' : '<:onec:380567470408204309>',
+  ':twoc' : '<:twoc:380567494907396099>',
+  ':threec:' : '<:threec:380567519611584513>',
+  ':fourc:' : '<:fourc:380567538771296257>',
+  ':fivec:' : '<:fivec:380567554441216000>',
+  ':sixc:' : '<:sixc:380567571247923200>',
+  ':sevenc:' : '<:sevenc:380567585999028235>',
+  ':eightc:' : '<:eightc:380567597881491458>',
+  ':ninec:' : '<:ninec:380567616265388042>',
+  ':tenc:' : '<:tenc:380567663149318154>',
+  ':elevenc:' : '<:elevenc:380567683571253254>',
+  ':twelvec:' : '<:twelevec:380567704119279627>',
+  ':thirteenc:' : '<:thirteenc:380567721840082944>',
+  ':fourteenc:' : '<:fourteenc:380567743759515651>',
+  ':fifteenc:' : '<:fifteenc:380567760226484227>',
+}
 
+String.prototype.replaceSymbols = function() {
+  var replaceString = this;
+  for (var key in emote_array) {
+      replaceString = replaceString.replace(key, emote_array[key]);
+  }
+  return replaceString;
+};
 
 client.on('ready', function (evt) {
     logger.info('Connected');
@@ -85,7 +117,8 @@ client.on('message', function (user, userID, channelID, message, evt) {
                         // Print out the response body
                         //console.log(body)
 
-                        client.sendMessage({ to: channelID, message: body });
+
+                        client.sendMessage({ to: channelID, message: body.replaceSymbols() });
                     } else {
                         client.sendMessage({ to: channelID, message: 'Error: '+error });
 
