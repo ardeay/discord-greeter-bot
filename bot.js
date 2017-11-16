@@ -26,7 +26,7 @@ server.listen(process.env.PORT || port, function(){
   client.on('ready', function (evt) {
       logger.info('Connected');
       logger.info('Logged in as: ');
-      logger.info(bot.username + ' - (' + bot.id + ')');
+      logger.info(client.username + ' - (' + client.id + ')');
   });
 
 
@@ -46,7 +46,7 @@ logger.level = 'debug';
 client.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
-    logger.info(client.username + ' - (' + bot.id + ')');
+    logger.info(client.username + ' - (' + client.id + ')');
 });
 
 client.on('message', function (user, userID, channelID, message, evt) {
