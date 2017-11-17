@@ -24,19 +24,6 @@ const server = http.createServer(requestHandler)
 
 server.listen(process.env.PORT || port, function(){
   // Initialize Discord Bot
-  client = new Discord.Client({
-      token: process.env.USERTOKEN,
-      autorun: true
-  });
-
-
-  client.on('ready', function (evt) {
-      logger.info('Connected');
-      logger.info('Logged in as: ');
-      logger.info(client.username + ' - (' + client.id + ')');
-  });
-
-
   console.log("Express server listening on port %d", this.address().port);
 });
 
