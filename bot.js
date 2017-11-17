@@ -64,7 +64,7 @@ var emote_array = {
 String.prototype.replaceSymbols = function() {
   var replaceString = this;
   for (var key in emote_array) {
-      replaceString = replaceString.replace(key, emote_array[key]);
+      replaceString = replaceString.replaceAll(key, emote_array[key]);
   }
   return replaceString;
 };
