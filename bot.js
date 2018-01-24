@@ -73,6 +73,7 @@ client.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(client.username + ' - (' + client.id + ')');
+		client.setMaxListeners(15);
 });
 
 client.on('message', function (user, userID, channelID, message, evt) {
@@ -88,15 +89,7 @@ client.on('message', function (user, userID, channelID, message, evt) {
         args = args.splice(1);
 
         switch(cmd) {
-            // !ping <:soontm:230340006219087873>
-            case 'test_emote':
-                client.sendMessage({ to: channelID, message: '<:onec:380567470408204309>' });
-                break;
 
-            case 'test_embed':
-                  client.sendMessage({ to: channelID, message: 'test' });
-
-                break;
             case 'card':
                 var cardName =  args.join(' ')
                 //console.log(cardName)
