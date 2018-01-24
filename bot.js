@@ -17,7 +17,7 @@ var client = new Discord.Client({
 
 const requestHandler = (request, response) => {
   console.log(request.url)
-  response.end('EchoBot back on!')
+  response.end('EchoBot back on :) !')
 }
 
 const server = http.createServer(requestHandler)
